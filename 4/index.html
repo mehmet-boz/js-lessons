@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="vki-holder">
+        <table>
+            <tr>
+                <td>Boy</td>
+                <td><input type="text" placeholder="Cm cinsinden" name="boy" id="boy"></td>
+            </tr>
+            <tr>
+                <td>Kilo</td>
+                <td><input type="text" placeholder="Kg cinsinden" name="kilo" id="kilo"></td>
+            </tr>
+            <tr>
+                <td>Cinsiyet</td>
+                <td>
+                    <input type="radio" name="cinsiyet" checked value="erkek" id="erkek">
+                    <label for="erkek">Erkek</label>
+                    <input type="radio" name="cinsiyet" value="kadin" id="kadin">
+                    <label for="kadin">Kadın</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="button" value="Hesapla" onclick="handleSubmitClick();"></td>
+            </tr>
+        </table>
+
+        <div id="sonuc-holder">
+            <p>Vücut Kitle Endeksiniz: <span id="vki">24</span></p>
+            <p>Sonuç: <span id="sonuc">Kilonuz normal</span></p>
+        </div>
+
+    </div>
+
+    <script>
+
+        let cinsiyet;
+        var boy = document.getElementById("boy")
+        var kilo = document.getElementById("kilo")
+        let erkekRadio = document.getElementById("erkek");
+        let kadinRadio = document.getElementById("kadin");
+
+        let vkiSpan = document.getElementById("vki");
+        let sonucSpan = document.getElementById("sonuc");
+
+
+        function handleSubmitClick() {  // basit fonksiyon, geriye değer döndürmez
+            boy = boy.value / 100;
+            kilo = kilo.value;
+            cinsiyet = getCinsiyet();
+
+            let _vki = kilo / (boy * boy)
+            vkiSpan.innerHTML = _vki;
+            sonucSpan.innerHTML = getResult(_vki);
+
+            console.log("Boy:", boy, "Kilo:", kilo, "Cinsiyet:", cinsiyet)
+        }
+
+        function getCinsiyet() { // return kullanıldığı için geriye değer döndürür
+
+            // normal if else yapısı
+
+            // if (erkekRadio.checked === true) {
+            //     return "Erkek"
+            // }
+            // else return "Kadın"
+
+            return erkekRadio.checked === true ? "Erkek" : "Kadın"; // itenerary if
+        }
+
+        function getResult(vki) { // parametreli fonksiyon
+            let _result;
+
+            if (vki < 18.5) {
+                _result = "Zayıfsınız.";
+            } else if (vki > 18.4 && vki < 25) {
+                _result = "Normalsiniz.";
+            }
+            else if (vki > 24.9 && vki < 30) {
+                _result = "Fazla kilolusunuz";
+            }
+            else if (vki > 34.9 && vki < 45) {
+                _result = "Obezsiniz!";
+            }
+            else {
+                _result = "Gırtlağına sahip çık...";
+
+
+
+
+                
+            }
+
+            return _result
+
+        }
+
+    </script>
+</body>
+
+</html>
