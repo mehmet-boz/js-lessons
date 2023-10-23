@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="parentTable" border="1">
+        <tr>
+            <td>Sıra</td>
+            <td>Ad Soyad</td>
+            <td>Cinsiyet</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Mehmet Boz</td>
+            <td>Erkek</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Mesut Doğan</td>
+            <td>Erkek</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Evren Aksu</td>
+            <td>Kadın</td>
+        </tr>
+
+
+    </table>
+
+    <br>
+    <input type="submit" onclick="addRow();" value="Ekle" />
+    <input type="submit" onclick="saveValues();" value="Kaydet" />
+
+    <script>
+
+        const parentTable = document.getElementById("parentTable").getElementsByTagName("tbody")[0];
+
+        function addRow() {
+            const newRoW = parentTable.insertRow()
+            addCell(newRoW, "txtSira")
+            addCell(newRoW, "txtAdSoyad")
+            addCell(newRoW, "txtCinsiyet")
+        }
+
+        function addCell(rowElement, id) {
+            const input = document.createElement("input")
+            input.setAttribute("id", id)
+            input.setAttribute("type", "text")
+            rowElement.insertCell().append(input)
+        }
+
+        function saveValues() {
+            const _sira = document.getElementById("txtSira").value
+            const _adSoyad = document.getElementById("txtAdSoyad").value
+            const _cinsiyet = document.getElementById("txtCinsiyet").value
+            parentTable.lastChild.remove();
+            addValuesToTable(_sira, _adSoyad, _cinsiyet)
+        }
+
+        function addValuesToTable(siraValue, adSoyadValue, cinsiyetValue) {
+            const newRoW = parentTable.insertRow()
+            newRoW.insertCell().append(siraValue);
+            newRoW.insertCell().append(adSoyadValue);
+            newRoW.insertCell().append(cinsiyetValue);
+        }
+
+    </script>
+</body>
+
+</html>
