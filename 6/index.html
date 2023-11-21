@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Counter App</h1>
+    <span class="counter-text" id="display">0</span>
+    <div class="buttons" id="allButtons">
+        <button class="decrement" id="decrement" type="button">Decrement</button>
+        <button class="reset" id="reset" type="button">Reset</button>
+        <button class="increment" id="increment" type="button">Increment</button>
+    </div>
+    <script>
+        const display = document.getElementById("display");
+        const allBtns = document.getElementById('allButtons');
+
+        allBtns.addEventListener('click', handleCountEvent);
+
+        let value = 0;
+
+        function handleCountEvent(event) {
+            console.log(event);
+            const btnName = event.target.id
+            if (btnName === "decrement") {
+                value--
+            } else if (btnName === "increment") {
+                value++
+            }
+            else {
+                value = 0
+            }
+            display.innerText = value
+        }
+
+    </script>
+    <!-- <script>
+        let value = 0;
+        const display = document.getElementById("counterText");
+
+        const decrementBtn = document.querySelector("#decrement");
+        decrementBtn.addEventListener('click', decrement);
+
+        const incrementBtn = document.querySelector("#increment");
+        incrementBtn.addEventListener('click', increment);
+
+        const resetBtn = document.querySelector("#reset");
+        resetBtn.addEventListener('click', reset);
+
+        function decrement() {
+            value--;
+            display.innerText = value;
+        }
+        function increment() {
+            value++;
+            display.innerText = value;
+        }
+        function reset() {
+            value = 0;
+            display.innerText = value;
+        }
+
+    </script> -->
+</body>
+
+</html>

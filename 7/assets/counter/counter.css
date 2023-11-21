@@ -1,0 +1,33 @@
+.counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eee;
+    border: 1px solid #dedede;
+    border-radius: 10px;
+    margin:5px;
+    padding:5px 10px;
+}
+.count-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    background-color: #ddd;
+    color: #000;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-decoration: none;
+}
+
+.count-button:hover {
+    background-color: blue;
+    color: #fff;
+}
+
+
+.display {
+    font-size: 32px;
+    font-family:monospace
+}
