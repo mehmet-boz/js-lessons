@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="inputs">
+            <input type="text" class="kupon-input" name="t1" id="t1">
+            <input type="text" class="kupon-input" name="t2" id="t2">
+            <input type="text" class="kupon-input" name="t3" id="t3">
+            <input type="text" class="kupon-input" name="t4" id="t4">
+            <input type="text" class="kupon-input" name="t5" id="t5">
+            <input type="text" class="kupon-input" name="t6" id="t6">
+        </div>
+        <a href="#" id="btnKaydet" onclick="kaydet();">Kupon Yap</a>
+        <a href="#" id="btnCekilisYap" style="opacity:0;" onclick="cekilisYap();">Çekiliş Yap</a>
+        <p id="sonuc"></p>
+
+    </div>
+    <script>
+        const kupon = []
+        const sonuclar = []
+
+        function kaydet() {
+            const sayilar = document.getElementsByClassName("kupon-input")
+            for (let i = 0; i < sayilar.length; i++) {
+                kupon.push(sayilar[i].value)
+                sayilar[i].setAttribute("disabled", true)
+            }
+
+            const kaydetButton = document.getElementById("btnKaydet")
+            kaydetButton.setAttribute("style", "margin-top:-50px; opacity:0;")
+
+            const cekilisButton = document.getElementById("btnCekilisYap")
+            cekilisButton.setAttribute("style", "margin-top:50px; opacity:1")
+
+            console.log(kupon);
+        }
+
+        function cekilisYap() {
+            const sonucP = document.getElementById("sonuc")
+
+            for (let i = 0; i < 6; i++) {
+                sonuclar.push(Math.floor(Math.random() * 49) + 1)
+                sonucP.innerHTML += sonuclar[i] + " "
+            }
+            console.log(sonuclar);
+
+        }
+    </script>
+</body>
+
+</html>
