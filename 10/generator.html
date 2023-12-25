@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" id="passLength">
+    <button type="button" onclick="generate();">Generate Password</button>
+    <h1 id="display"></h1>
+
+    <script>
+        function generate() {
+            const disp = document.getElementById("display");
+            const passwordLength = document.getElementById("passLength").value;
+
+            const generatedPass = generatePass(passwordLength);
+            disp.innerHTML = generatedPass;
+        }
+
+        function generatePass(passLength) {
+            const chars = "abcçdefgğıijklm";
+            let password = "";
+
+            for (let i = 0; i < passLength; i++) {
+                var randomNumber = Math.floor(Math.random() * chars.length)
+                password += chars.substring(randomNumber, randomNumber + 1)
+            }
+            return password;
+        }
+
+    </script>
+</body>
+
+</html>

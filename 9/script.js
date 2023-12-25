@@ -1,12 +1,22 @@
-const kupon = []
+let kupon = []
 const sonuclar = []
 
 function kaydet() {
     const sayilar = document.getElementsByClassName("kupon-input")
+    kupon = []
 
     for (let i = 0; i < sayilar.length; i++) {
-        kupon.push(sayilar[i].value)
-        sayilar[i].setAttribute("disabled", true)
+        const value = Number(sayilar[i].value)
+        if (!kupon.includes(value)) {
+            kupon.push(Number(sayilar[i].value))
+        } else {
+            alert("Sayılar tekrar edemez!")
+            return;
+        }
+    }
+
+    for (let k = 0; k < sayilar.length; k++) {
+        sayilar[k].setAttribute("disabled", true)
     }
 
     const kaydetButton = document.getElementById("btnKaydet")
@@ -26,8 +36,33 @@ function cekilisYap() {
     karsilastirButton.setAttribute("style", "")
 
     for (let i = 0; i < 6; i++) {
-        sonuclar.push(Math.floor(Math.random() * 49) + 1)
-        sonucP.innerHTML += sonuclar[i] + " "
+        const newNumber = Math.floor(Math.random() * 49) + 1;
+        if (!sonuclar.includes(newNumber)) {
+            sonuclar.push(newNumber)
+            sonucP.innerHTML += sonuclar[i] + " "
+        }
+        else {
+            i--;
+        }
     }
 }
+
+function karsilastir() {
+
+    console.log(kupon);
+    console.log(sonuclar);
+    const tutanlar = []
+
+    for (let i = 0; i < kupon.length; i++) {
+        for (let k = 0; k < sonuclar.length; k++) {
+            if (kupon[i] === sonuclar[k]) {
+                tutanlar.push(kupon[i])
+            }
+        }
+    }
+
+    console.log(tutanlar);
+
+}
+
 
